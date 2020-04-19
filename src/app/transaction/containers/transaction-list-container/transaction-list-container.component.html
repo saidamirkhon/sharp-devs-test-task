@@ -1,0 +1,13 @@
+<h1>Transactions</h1>
+<button
+  class="pw-fab"
+  mat-fab
+  color="accent"
+  (click)="goToCreateTransaction()"
+>
+  <mat-icon>add</mat-icon>
+</button>
+<pw-transaction-list
+  (clone)="cloneTransaction($event)"
+  [list]="list$ | async"
+></pw-transaction-list>

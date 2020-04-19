@@ -1,0 +1,43 @@
+<form
+  class="pw-form"
+  [formGroup]="form"
+  (ngSubmit)="submitForm()"
+>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      (pwSearch)="searchUsersByName($event)"
+      formControlName="name"
+      [matAutocomplete]="usersAutoComplete"
+    >
+    <mat-autocomplete #usersAutoComplete="matAutocomplete">
+      <mat-option
+        *ngFor="let userName of userNames"
+        [value]="userName"
+      >
+        {{userName}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="form.controls['name'].errors?.required">{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error *ngIf="form.controls['name'].errors?.nonEmptyString">{{fieldErrorMessages.valueIsEmpty}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="amount"
+    >
+    <mat-error *ngIf="form.controls['amount'].errors?.required">{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error *ngIf="form.controls['amount'].errors?.min">{{fieldErrorMessages.valueIsNotPositive}}</mat-error>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="form.invalid"
+    class="pw-full-width"
+    type="submit"
+  >Create
+  </button>
+</form>

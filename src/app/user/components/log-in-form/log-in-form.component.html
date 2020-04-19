@@ -1,0 +1,39 @@
+<form
+  class="pw-form"
+  [formGroup]="form"
+  (ngSubmit)="submitForm()"
+>
+  <mat-form-field>
+    <mat-label>
+      Email
+    </mat-label>
+    <input
+      required
+      matInput
+      formControlName="email"
+    >
+    <mat-error *ngIf="form.controls['email'].errors?.required">{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error *ngIf="form.controls['email'].errors?.email">{{fieldErrorMessages.valueIsInvalid}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>
+      Password
+    </mat-label>
+    <input
+      required
+      matInput
+      type="password"
+      formControlName="password"
+    >
+    <mat-error *ngIf="form.controls['password'].errors?.required">{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error *ngIf="form.controls['password'].errors?.nonEmptyString">{{fieldErrorMessages.valueIsEmpty}}</mat-error>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    class="pw-full-width"
+    color="primary"
+    [disabled]="form.invalid"
+    type="submit"
+  >Log in
+  </button>
+</form>

@@ -1,0 +1,18 @@
+<pw-header-nav
+  (logOut)="logOut()"
+>
+  <ng-container
+    *ngIf="(userInfo$ | async) as userInfo"
+    #userInfoTemplate
+    userInfoTemplate
+  >
+    <span
+      [matBadge]="userInfo.balance"
+      matBadgeColor="accent"
+      matBadgeOverlap="false"
+    >{{userInfo.name}}</span>
+  </ng-container>
+</pw-header-nav>
+<section class="pw-page">
+  <router-outlet></router-outlet>
+</section>

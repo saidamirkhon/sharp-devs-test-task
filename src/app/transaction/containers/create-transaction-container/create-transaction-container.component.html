@@ -1,0 +1,18 @@
+<h1>Create transaction</h1>
+<mat-card
+  class="pw-form-wrapper"
+>
+  <pw-transaction-form
+    [userNames]="userNames$ | async"
+    (searchUsers)="searchUsersByName($event)"
+    (formSubmit)="createTransaction($event)"
+  ></pw-transaction-form>
+</mat-card>
+<button
+  class="pw-fab"
+  mat-fab
+  color="accent"
+  (click)="goToTransactionList()"
+>
+  <mat-icon>list</mat-icon>
+</button>

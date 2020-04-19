@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #e8e8e8;
+}
+
+.pw-page-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pw-center-x {
+  justify-content: center;
+}
+
+.pw-center-y {
+  align-items: center;
+}
+
+.pw-page {
+  padding: 1rem;
+}
+
+.pw-fab {
+  position: fixed !important;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.pw-full-width {
+  width: 100%;
+}
+
+.pw-form mat-form-field {
+  @extend .pw-full-width;
+}
+
+.pw-form-wrapper {
+  max-width: 300px;
+}
+
+.pw-info-text {
+  margin-top: 1rem !important;
+  text-align: center;
+}

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>PW</span>
+  <ng-container
+    *ngIf="userInfoTemplate"
+  >
+    <ng-content
+      select="[userInfoTemplate]"
+    ></ng-content>
+  </ng-container>
+  <button
+    mat-button
+    (click)="handleLogOut()"
+  >Log out
+  </button>
+</mat-toolbar>

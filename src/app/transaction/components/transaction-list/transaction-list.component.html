@@ -1,0 +1,80 @@
+<table
+  mat-table
+  matSort
+  [dataSource]="dataSource"
+  [trackBy]="trackByTransactionId"
+>
+  <ng-container matColumnDef="date">
+    <th
+      mat-header-cell
+      mat-sort-header
+      *matHeaderCellDef
+    >Date
+    </th>
+    <td
+      mat-cell
+      *matCellDef="let element"
+    > {{element.date | date: 'MMM d, y, hh:mm:ss'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="username">
+    <th
+      mat-header-cell
+      mat-sort-header
+      *matHeaderCellDef
+    >Correspondent Name
+    </th>
+    <td
+      mat-cell
+      *matCellDef="let element"
+    > {{element.username}} </td>
+  </ng-container>
+  <ng-container matColumnDef="amount">
+    <th
+      mat-header-cell
+      mat-sort-header
+      *matHeaderCellDef
+    > Amount
+    </th>
+    <td
+      mat-cell
+      *matCellDef="let element"
+    > {{element.amount}} </td>
+  </ng-container>
+  <ng-container matColumnDef="balance">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+    >Balance
+    </th>
+    <td
+      mat-cell
+      *matCellDef="let element"
+    > {{element.balance}} </td>
+  </ng-container>
+  <ng-container matColumnDef="cloneAction">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+    >Actions
+    </th>
+    <td
+      mat-cell
+      *matCellDef="let element"
+    >
+      <button
+        mat-button
+        color="primary"
+        (click)="handleClone(element)"
+      >Clone
+      </button>
+    </td>
+  </ng-container>
+  <tr
+    mat-header-row
+    *matHeaderRowDef="displayedColumns; sticky: true"
+  ></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns;"
+  ></tr>
+</table>

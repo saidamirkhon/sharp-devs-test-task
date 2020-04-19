@@ -1,0 +1,16 @@
+<mat-card
+  class="pw-form-wrapper"
+>
+  <h1>Log in</h1>
+  <pw-log-in-form
+    (formSubmit)="logIn($event)"
+  ></pw-log-in-form>
+  <h4
+    class="pw-info-text"
+  >
+    Do not have account yet ? Please
+    <a
+      [routerLink]="UserPaths.SIGN_UP | pwRelativeToParentRoute"
+    >sign up!</a>
+  </h4>
+</mat-card>

@@ -1,0 +1,62 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="submitForm()"
+  class="pw-form"
+>
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input
+      required
+      matInput
+      formControlName="username"
+    >
+    <mat-error *ngIf="form.controls['username'].errors?.required">{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error *ngIf="form.controls['username'].errors?.nonEmptyString">{{fieldErrorMessages.valueIsEmpty}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      required
+      matInput
+      formControlName="email"
+    >
+    <mat-error *ngIf="form.controls['email'].errors?.required">{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error *ngIf="form.controls['email'].errors?.email">{{fieldErrorMessages.valueIsInvalid}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      required
+      matInput
+      formControlName="password"
+      type="password"
+    >
+    <mat-error *ngIf="form.controls['password'].errors?.required">{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error *ngIf="form.controls['password'].errors?.nonEmptyString">{{fieldErrorMessages.valueIsEmpty}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Verify password</mat-label>
+    <input
+      required
+      matInput
+      formControlName="verifyPassword"
+      type="password"
+      [errorStateMatcher]="errorStateMatcher"
+    >
+    <mat-error
+      *ngIf="form.controls['verifyPassword'].errors?.required"
+    >{{fieldErrorMessages.valueIsRequired}}</mat-error>
+    <mat-error
+      *ngIf="form.controls['verifyPassword'].errors?.nonEmptyString"
+    >{{fieldErrorMessages.valueIsEmpty}}</mat-error>
+    <mat-error *ngIf="form.errors?.equalValues">{{fieldErrorMessages.passwordsNotMatch}}</mat-error>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    class="pw-full-width"
+    color="primary"
+    [disabled]="form.invalid"
+    type="submit"
+  >Sign up
+  </button>
+</form>
